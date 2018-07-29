@@ -1,42 +1,46 @@
 var MoviesList = React.createClass({
-  state: {
-    movies: [{
-        id: 1,
-        title: 'Harry Potter',
-        desc: 'film o czarodzieju',
-        image: 'hp.jpg'
-      },
-      {
-        id: 2,
-        title: 'Krol Lew',
-        desc: 'Film o krolu sawanny',
-        image: 'kl.jpg'
-      },
-      {
-        id: 3,
-        title: 'Matrix',
-        desc: 'film o apokalipsie',
-        image: 'mx.jpg'
-      },
-      {
-        id: 4,
-        title: 'Wlatca pierscieni',
-        desc: 'film o ratowaniu swiata',
-        image: 'lotr.jpg'
-      }
-    ]
+  getInitialState: function () {
+    return {
+      movies: [{
+          id: 1,
+          title: 'Harry Potter',
+          desc: 'film o czarodzieju',
+          image: 'hp.jpg'
+        },
+        {
+          id: 2,
+          title: 'Krol Lew',
+          desc: 'Film o krolu sawanny',
+          image: 'kl.jpg'
+        },
+        {
+          id: 3,
+          title: 'Matrix',
+          desc: 'film o apokalipsie',
+          image: 'mx.jpg'
+        },
+        {
+          id: 4,
+          title: 'Wlatca pierscieni',
+          desc: 'film o ratowaniu swiata',
+          image: 'lotr.jpg'
+        }
+      ]
+    };
   },
-  answer: this.state.movies.map(function (movie) {
-    return React.createElement(Movie, {
-      movie: movie,
-      key: movie.id
-    });
-  }),
+  answer: function () {
+    this.state.movies.map(function (movie) {
+      return React.createElement(Movie, {
+        movie: movie,
+        key: movie.id
+      });
+    })
+  },
   render: function () {
     return (
       React.createElement('div', {},
         React.createElement('h1', {}, 'lista filmow'),
-        React.createElement('ul', {}, answer),
+        React.createElement('ul', {}, this.answer),
       )
     )
   }
